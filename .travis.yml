@@ -47,6 +47,7 @@ jobs:
     - make container IMAGE=docker.io/projectcontour/contour VERSION=ci
     - docker tag docker.io/projectcontour/contour:ci docker.io/projectcontour/contour:master
     - docker tag docker.io/projectcontour/contour:ci docker.io/projectcontour/contour:latest
+    - GO111MODULE="on" go get sigs.k8s.io/kind@v0.8.1
     script:
     - $HOME/bin/kind create cluster --wait 2m
     - $HOME/bin/kind load docker-image docker.io/projectcontour/contour:master
@@ -59,6 +60,7 @@ jobs:
   - name: lint
     install:
     - go mod vendor
+    - GO111MODULE="on" go get sigs.k8s.io/kind@v0.8.1
     script:
     - make lint
 
