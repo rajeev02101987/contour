@@ -39,19 +39,19 @@ esac
 
 
 download \
-    "https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERS}/kind-${OS}-amd64" \
+    "https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERS}/kind-${OS}-arm64" \
     "${DESTDIR}/kind"
 
 chmod +x  "${DESTDIR}/kind"
 
 download \
-    "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERS}/bin/${OS}/amd64/kubectl" \
+    "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERS}/bin/${OS}/arm64/kubectl" \
     "${DESTDIR}/kubectl"
 
 chmod +x "${DESTDIR}/kubectl"
 
 download \
-    "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERS}/kustomize_${KUSTOMIZE_VERS}_${OS}_amd64.tar.gz" \
+    "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERS}/kustomize_${KUSTOMIZE_VERS}_${OS}_arm64.tar.gz" \
     "${DESTDIR}/kustomize.tgz"
 
 tar -C "${DESTDIR}" -xf "${DESTDIR}/kustomize.tgz" kustomize
