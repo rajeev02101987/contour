@@ -49,7 +49,7 @@ jobs:
     - docker tag docker.io/projectcontour/contour:ci docker.io/projectcontour/contour:latest
     - GO111MODULE="on" go get sigs.k8s.io/kind@v0.8.1
     script:
-    - $HOME/bin/kind create cluster --wait 2m
+    - $HOME/bin/kind create cluster -v 1 --wait 2m
     - $HOME/bin/kind load docker-image docker.io/projectcontour/contour:master
     - $HOME/bin/kind load docker-image docker.io/projectcontour/contour:latest
     - '$HOME/bin/kubectl apply -f <(sed "s/imagePullPolicy: Always/imagePullPolicy: IfNotPresent/g" < examples/render/contour.yaml)'
